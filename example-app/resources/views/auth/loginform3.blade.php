@@ -10,13 +10,20 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <form class="box">
+                <form class="box" action='check' method='get'>
+                @if(Session::get('fail'))
+                {{Session::get('fail')}}
+                @endif
                     <h1>Login</h1>
                     <p class="text-muted"> Please enter your login and password!</p>
-                     <input type="text" name="" placeholder="Username"> </br>
-                     <input type="password" name="" placeholder="Password"></br>
-                      <a class="forgot text-muted" href="#">Forgot password?</a></br>
-                     <input type="submit" name="" value="Login" href="#">
+                     <input type="text" name="email" placeholder="email"> </br>
+                     <span>@error('email'){{$message}}@enderror</span>
+
+                     <input type="password" name="password" placeholder="Password"></br>
+                     <span>@error('password'){{$message}}@enderror</span>
+
+                      <!-- <a class="forgot text-muted" href="#">Forgot password?</a></br> -->
+                     <input type="submit" name="submit" value="Login" href="#">
                     <div class="col-md-12">
                         
                     </div>

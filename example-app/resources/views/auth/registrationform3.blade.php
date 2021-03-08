@@ -106,13 +106,13 @@ body {
     <form action="regist" method="get">
 	<div>
 		@if(Session::get('success'))
-		<div class="alert alert-success">
+			<div class="alert alert-success">
 		{{Session::get('success')}}
 		</div>
 		@endif
 		<div>
 		@if(Session::get('fail'))
-		<div class="alert alert-fail">
+			<div class="alert alert-fail">
 		{{Session::get('fail')}}
 		</div>
 		@endif
@@ -123,13 +123,13 @@ body {
 
 			<div class="col">
                 <label for="inputname">Name</label>    
-                <input type="text" class="form-control" name="username" placeholder="Full Name">
+                <input type="text" class="form-control" name="username" value="{{old('username')}}" placeholder="Full Name">
 				<span>@error('username'){{$message}}@enderror</span>
 			</div>        	
         </div>
         <div class="form-group">
         <label for="inputemail">Email</label>
-        	<input type="email" class="form-control" name="email" placeholder="Email">
+        	<input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Email">
 			<span>@error('email'){{$message}}@enderror</span>
 		</div>
 		<div class="form-group">

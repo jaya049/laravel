@@ -6,7 +6,8 @@
             <input type="text" placeholder="NAME" name="name"></br>
             <input type="email" placeholder="email" name="email"></br>
             <input type="text" placeholder="Address" name="address"></br>
-            <input type="submit" name="submit">
+            <input type="submit" name="submit"></br>
+            <a href="list">View</a>
         </form>
     </body>
 </html>

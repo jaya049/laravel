@@ -68,5 +68,5 @@ Route::view('sample','sample');
 Route::view('loginform3','auth/loginform3');
 Route::view('registration','auth/registrationform3');
 Route::view('dashboard','auth/dashboard');
-
 Route::get('regist',[UserAuthController::class,'validate_reg']);
+Route::get('check',[UserAuthController::class,'check']);

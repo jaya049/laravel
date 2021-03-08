@@ -9,7 +9,7 @@ class MemberController extends Controller
 
         function memberadd(Request $req)
         {
-            $member=new member;
+            $member=new Member;
             $member->members_name=$req->name;
             $member->email=$req->email;
             $member->address=$req->address;

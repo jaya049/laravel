@@ -19,7 +19,7 @@ class UserAuthController extends Controller
         $data=new Auth;
         $data->username=$req->username;
         $data->email=$req->email;
-        $data->password=$req->password;
+        $data->password=Hash::make($req->password);
         $query=$data->save();
         if($query)
         {
@@ -29,17 +29,14 @@ class UserAuthController extends Controller
             return back()->with('fail','something went wrong');
         } 
     }
-    function dashboard()
-    {
-        return view('dashboard');
-    }
+
     function check(Request $req)
     {
         $req->validate([
             'email'=>'required',
             'password'=>'required'
         ]);
-        $userinfo=Auth::where('email','=','$req->email')->first();
+        $userinfo=Auth::where('email','=',$req->email)->first();
         if(!$userinfo)
         {
             return back()->with('fail','Your email is not recognized!');
@@ -47,15 +44,22 @@ class UserAuthController extends Controller
         else{
             if(Hash::check($req->password,$userinfo->password))
             {
-                $req->Session()->put('Logged User',$userinfo->id);
-                return redirect('dashboard');
-
+                $req->Session()->put('LoggedUser',$userinfo->id);
+                return view('auth.dashboard');
             }
             else
             {
                 return back()->with('fail','invalid password');
             }
         }
-    }    
+    }
+
+    function dashboard()
+    {
+        $data=['LoggedUserInfo'=>Auth::where('id','=',Session('LoggedUser'))->first()];
+        return view('dashboard',$data);
+    }
+
+    
     
 }

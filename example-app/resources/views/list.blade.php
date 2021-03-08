@@ -22,6 +22,6 @@
         <td><a href={{"update/".$user->id}}>Update</a></td></tr>
     @endforeach
         </table>
-   
+   <a href="mem">Add</a>
     </body>
 </html>
